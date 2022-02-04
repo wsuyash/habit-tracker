@@ -6,7 +6,6 @@ router.get('/', async (req, res) => {
   let habits;
   try {
     habits = await Habit.find({});
-    console.log(habits);
   } catch(err) {
     console.log(err);
   }

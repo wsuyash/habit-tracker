@@ -1,12 +1,17 @@
 const mongoose = require('mongoose');
 
 const HabitSchema = new mongoose.Schema({
-  name: {
+  desc: {
     type: String,
     required: true,
   },
   dates: [{
-    type: Date, 
+    Date: {
+      type: Date,
+    },
+    Status: {
+      type: Boolean, 
+    },
   }],
   favourite: {
     type: Boolean,
