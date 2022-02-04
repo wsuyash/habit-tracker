@@ -1,29 +1,43 @@
+<% title="Habit Tracker - Register" %>
+
 <div class="row my-2">
 	<img src="/images/login.png" class="m-auto" style="width: 16rem; height: 15rem;" alt="register logo">
 </div>
-<form action="/users/register/new-user" class="col-6 m-auto" method="post">
+<form action="/users/new-user" class="col-6 m-auto" method="post">
 	<div class="row mb-2">
 		<div class="col">
-    	<label for="firstName" class="form-label">First Name:</label>
-			<input type="text" name="firstName" id="firstName" class="form-control" aria-label="First name" required>
+			<label for="firstName" class="form-label">First Name:</label>
+			<input
+				type="text"
+				name="firstName"
+				id="firstName"
+				class="form-control"
+				aria-label="First name"
+				value="<%= firstName%>"
+				required
+			>
 		</div>
 		<div class="col">
-    	<label for="lastName" class="form-label">Last Name:</label>
-			<input type="text" name="lastName" id="lastName" class="form-control" aria-label="Last name">
+			<label for="lastName" class="form-label">Last Name:</label>
+			<input type="text" name="lastName" id="lastName" class="form-control" aria-label="Last name"
+				value="<%= lastName%>"
+			>
 		</div>
 	</div>
-  <div class="mb-2">
-    <label for="email" class="form-label">Email:</label>
-    <input type="email" name="email" class="form-control" id="email" required>
-  </div>
-  <div class="mb-2">
-    <label for="password" class="form-label">Password:</label>
-    <input type="password" name="password" class="form-control" id="password" required>
-  </div>
-  <div class="mb-2">
-    <label for="confirmPassword" class="form-label">Confirm Password:</label>
-    <input type="password" name="confirmPassword" class="form-control" id="confirmPassword" required>
-  </div>
-  <button type="submit" class="col-12 btn btn-primary my-3">Register</button>
-  <p class="fw-bold">Already have an account? &nbsp <a href="/users/login" class="btn btn-sm btn-danger">Login</a></p>
+	<div class="mb-2">
+		<label for="email" class="form-label">Email:</label>
+		<input type="email" name="email" class="form-control" id="email" required
+			value="<%= email%>"
+		>
+	</div>
+	<div class="mb-2">
+		<label for="password" class="form-label">Password:</label>
+		<input type="password" name="password" class="form-control" id="password" required>
+	</div>
+	<div class="mb-2">
+		<label for="confirmPassword" class="form-label">Confirm Password:</label>
+		<input type="password" name="confirmPassword" class="form-control" id="confirmPassword" required>
+	</div>
+	<button type="submit" class="col-12 btn btn-primary my-3">Register</button>
+	<p class="fw-bold">Already have an account? &nbsp <a href="/users/login" class="btn btn-sm btn-danger">Login</a></p>
 </form>
