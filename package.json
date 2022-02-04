@@ -4,7 +4,7 @@
   "description": "A habit tracker app.",
   "main": "index.js",
   "scripts": {
-		"dev": "nodemon index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Suyash Wagh",
@@ -13,6 +13,6 @@
     "ejs": "^3.1.6",
     "express": "^4.17.2",
     "express-ejs-layouts": "^2.5.1",
-    "mongoose": "^6.1.10"
+    "mongoose": "^6.2.0"
   }
 }

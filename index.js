@@ -8,7 +8,10 @@ const port = 8000;
 
 const app = express();
 
+// Body parser
 app.use(express.urlencoded({ extended: false }));
+
+// Static files
 app.use(express.static(path.join(__dirname, 'public')));
 
 // EJS
