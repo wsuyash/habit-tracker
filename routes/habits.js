@@ -1,4 +1,5 @@
 const express = require('express');
+const res = require('express/lib/response');
 const router = express.Router();
 const db = require('../config/mongoose');
 const Habit = require('../models/Habit');
@@ -32,13 +33,13 @@ router.post('/delete/:id', async (req, res) => {
 
 		if (habit) {
 			habit.remove();
-			return res.redirect('/');
 		}
 
 	} catch (error) {
 		console.log(error);
-		return res.redirect('back');
 	}
+
+	return res.redirect('/');
 });
 
 router.post('/status', async (req, res) => {

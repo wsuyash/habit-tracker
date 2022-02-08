@@ -15,9 +15,6 @@ const HabitSchema = new mongoose.Schema({
 			enum: ['None', 'Done', 'Not Done'],
     },
   }],
-  favourite: {
-    type: Boolean,
-  },
 },
 {
   timestamps: true,

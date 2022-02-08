@@ -4,13 +4,17 @@ const db = require('../config/mongoose');
 const Habit = require('../models/Habit');
 
 router.get('/', async (req, res) => {
-	let habits = await Habit.find({});
 
-	let dates = habits.dates;
+	try {
+		let habits = await Habit.find({});
 
-  res.render('home', {
-		habits,
-	});
+		return res.render('home', {
+			habits,
+			view: 'weekly',
+		});
+	} catch (error) {
+		console.log(error);	
+	}
 });
 
 router.use('/habits', require('./habits'));
