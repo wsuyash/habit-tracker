@@ -10,7 +10,9 @@ const HabitSchema = new mongoose.Schema({
       type: Date,
     },
     Status: {
-      type: Boolean, 
+      type: String, 
+			default: 'None',
+			enum: ['None', 'Done', 'Not Done'],
     },
   }],
   favourite: {

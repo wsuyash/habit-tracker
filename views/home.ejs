@@ -1,14 +1,47 @@
-<% title = "Habit Tracker" %>
+<% title = "Habit Tracker - Home" %>
+<h1 class="text-center my-3">Your Habits</h2>
 
-<div class="col-8 card m-auto mt-5">
-    <h2 class="card-title text-center mt-2">Habit Tracker</h2>
-    <div class="row">
-      <img src="/images/logo.png" class="card-img-top m-auto my-2" style="width: 16rem; height: 15rem;" alt="logo">
-    </div>
-    <div class="row mt">
-    	<a href="/users/login" class="col-4 m-auto btn btn-outline-primary">Login</a>
-    </div>
-    <div class="row my-2">
-      <a href="/users/register" class="col-4 m-auto btn btn-danger">Register</a>
-    </div>
-</div>
+<form action="/habits/new" method="post">
+	<div class="input-group mb-3">
+		<input type="text" class="form-control" name="desc" placeholder="Add a new habit..." aria-label="Add a new habit..." aria-describedby="button-addon2" required>
+		<button class="btn btn-outline-secondary" type="submit" id="button-addon2">Add Habit</button>
+	</div>
+</form>
+
+<% if (habits) { %>
+
+	<ul class="list-group my-2">
+		<% for (let i = habits.length - 1; i >= 0; i--) { %>
+			<li class="list-group-item d-flex justify-content-between gap-1 border-bottom p-2">
+
+				<div style="width: 15rem; font-weight: bold;">
+					<%= habits[i].desc %>
+				</div>
+
+				<% for (let j = 0; j < habits[i].dates.length; j++) { %>
+					<div class="d-flex flex-column justify-content-center align-items-center gap-1">
+						<%= j !== habits[i].dates.length - 1 ? habits[i].dates[j].Date.toLocaleDateString('en-IN') : 'Today' %>
+						<br>
+						<form action="/habits/status/?habitId=<%= habits[i]._id %>&dateId=<%= habits[i].dates[j]._id %>" method="post">
+							<button type="submit" style="border: none; background: transparent;">
+								<% if (habits[i].dates[j].Status === 'None') { %>
+									<i class="fa-solid fa-circle" style="font-size: 28px; color: white;"></i>
+								<% } else if(habits[i].dates[j].Status === 'Not Done') { %>
+									<i class="fa-solid fa-circle-xmark" style="font-size: 28px;color: red;"></i>
+								<% } else { %>
+									<i class="fa-solid fa-circle-check" style="font-size: 28px;color: green;"></i>
+								<% } %>
+							</button>
+						</form>
+					</div>
+				<% } %>
+
+				<form class="align-self-center" action="/habits/delete/<%= habits[i]._id %>" method="post">
+						<button class="btn btn-sm btn-danger" type="submit">Delete</button>
+				</form>
+
+			</li>
+		<% } %>
+	</ul>
+
+<% } %>
