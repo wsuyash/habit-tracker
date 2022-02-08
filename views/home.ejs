@@ -25,11 +25,11 @@
 						<form action="/habits/status/?habitId=<%= habits[i]._id %>&dateId=<%= habits[i].dates[j]._id %>" method="post">
 							<button type="submit" style="border: none; background: transparent;">
 								<% if (habits[i].dates[j].Status === 'None') { %>
-									<i class="fa-solid fa-circle" style="font-size: 28px; color: white;"></i>
+									<i class="fa-solid fa-circle" style="font-size: 32px; color: white;"></i>
 								<% } else if(habits[i].dates[j].Status === 'Not Done') { %>
-									<i class="fa-solid fa-circle-xmark" style="font-size: 28px;color: red;"></i>
+									<i class="fa-solid fa-circle-xmark" style="font-size: 32px;color: red;"></i>
 								<% } else { %>
-									<i class="fa-solid fa-circle-check" style="font-size: 28px;color: green;"></i>
+									<i class="fa-solid fa-circle-check" style="font-size: 32px;color: green;"></i>
 								<% } %>
 							</button>
 						</form>
