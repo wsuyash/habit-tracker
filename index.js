@@ -22,5 +22,5 @@ app.set('view engine', 'ejs');
 app.use('/', require('./routes'));
 
 app.listen(port, (req, res) => {
-	console.log(`Server started on port: ${port}`);	
+  console.log(`Server started on port: ${port}`);	
 });
