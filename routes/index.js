@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
 	try {
 		let habits = await Habit.find({});
 
-		return res.render('home', {
+		return res.render('dashboard', {
 			habits,
 			view: 'weekly',
 		});
