@@ -5,10 +5,10 @@ const Habit = require('../models/Habit');
 
 router.get('/:id', async (req, res) => {
 	try {
-		let user = await User.findById(req.params.id);
+		let id = req.params.id
+		let user = await User.findById(id);
+		let habits = await Habit.find({user: id});
 
-		let habits = user.habits;
-		console.log(habits);
 		// for (let i = 0; i < habits.length; i++) {
 
 		// 	if (habits[i].dates[6].Date.toDateString('en-IN') !== new Date().toDateString('en-In')) {
@@ -29,10 +29,10 @@ router.get('/:id', async (req, res) => {
 		// }
 
 		return res.render('dashboard', {
-			user,
-			view: 'weekly',
+			userId: id,
+			view: user.view,
+			habits,
 		});
-		return res.redirect('back');
 	} catch (error) {
 		console.log(error);	
 	}

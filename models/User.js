@@ -17,10 +17,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  habits: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Habit',
-  }],
 	view: {
 		type: String,
 		default: 'daily',
