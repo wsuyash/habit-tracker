@@ -15,6 +15,10 @@ const HabitSchema = new mongoose.Schema({
 			enum: ['None', 'Done', 'Not Done'],
     },
   }],
+	user: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'User'
+	}
 },
 {
   timestamps: true,

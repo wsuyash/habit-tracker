@@ -1,33 +1,38 @@
 const router = require('express').Router();
 const db = require('../config/mongoose');
+const User = require('../models/User');
 const Habit = require('../models/Habit');
 
-router.get('/', async (req, res) => {
+router.get('/:id', async (req, res) => {
 	try {
-		let habits = await Habit.find({});
+		let user = await User.findById(req.params.id);
 
-		for (let i = 0; i < habits.length; i++) {
-			// number of days since habit was created
-			let numberOfDays = Math.round((new Date() - habits[i].createdAt) / (1000*60*60*24));
+		let habits = user.habits;
+		console.log(habits);
+		// for (let i = 0; i < habits.length; i++) {
 
-			if (numberOfDays > 0) {
-				let newDates = [];
-				newDates = habits[i].dates.splice(numberOfDays);
+		// 	if (habits[i].dates[6].Date.toDateString('en-IN') !== new Date().toDateString('en-In')) {
+		// 		// number of days since habit was created
+		// 		let numberOfDays = Math.round((new Date() - habits[i].createdAt) / (1000*60*60*24));
 
-				for (let j = numberOfDays - 1; j >= 0; j--) {
-					let newDate = new Date(new Date().setDate(new Date().getDate() - j));
-					newDates.push({Date: newDate, Status: 'None'});
-				}
-				habits[i].dates = newDates;
+		// 		if (numberOfDays > 0) {
+		// 			habits[i].dates.splice(numberOfDays);
 
-				await habits[i].save();
-			}
-		}
+		// 			for (let j = numberOfDays - 1; j >= 0; j--) {
+		// 				let newDate = new Date(new Date().setDate(new Date().getDate() - j));
+		// 				habits[i].dates.push({Date: newDate, Status: 'None'});
+		// 			}
+
+		// 			await habits[i].save();
+		// 		}
+		// 	}
+		// }
 
 		return res.render('dashboard', {
-			habits,
+			user,
 			view: 'weekly',
 		});
+		return res.redirect('back');
 	} catch (error) {
 		console.log(error);	
 	}

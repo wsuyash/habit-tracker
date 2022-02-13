@@ -1,8 +1,8 @@
 // Imports
 const express = require('express');
-const expressSession = require('express-session');
+// const expressSession = require('express-session');
 const expressLayouts = require('express-ejs-layouts');
-const flash = require('connect-flash');
+// const flash = require('connect-flash');
 const path = require('path');
 
 // Port
@@ -20,7 +20,7 @@ app.set('view engine', 'ejs');
 // Body parser
 app.use(express.urlencoded({ extended: false }));
 
-// Express-session
+/* // Express-session
 app.use(expressSession({
   secret: 'secret',
   resave: false,
@@ -30,12 +30,12 @@ app.use(expressSession({
 // Flash for notifications
 app.use(flash());
 
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
 	res.locals.success_msg = req.flash('success_msg');
 	res.locals.error_msg = req.flash('error_msg');
 	res.locals.error = req.flash('error');
 	next();
-});
+}); */
 
 // Routes
 app.use('/', require('./routes'));

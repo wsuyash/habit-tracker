@@ -18,9 +18,14 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
   habits: [{
-    type: mongoose.SchemaTypes.ObjectId,
-    ref: 'Habit'
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Habit',
   }],
+	view: {
+		type: String,
+		default: 'daily',
+		enum: ['daily', 'weekly'],
+	}
 },
 {
   timestamps: true,

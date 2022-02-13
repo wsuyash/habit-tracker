@@ -1,28 +1,60 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../config/mongoose');
+const User = require('../models/User');
 const Habit = require('../models/Habit');
 
-router.post('/new', async (req, res) => {
+router.post('/new/:id', async (req, res) => {
 	const { desc } = req.body;
+	// console.log(req.params.id);
 
-	const dates = []; 
+	try {
+		let user = await User.findById(req.params.id);
+		console.log(user);
 
-	for (let i = 6; i > 0; i--) {
-		let newDate = new Date(new Date().setDate(new Date().getDate() - i));
-		dates.push({Date: newDate, Status: 'None'});
+		// let oldHabit = Habit.find({ user: user._id, desc: desc});
+
+		// if (oldHabit) {
+		// 	console.log('Habit already exists.');
+		// 	return res.redirect('back');
+		// }
+
+		const dates = []; 
+
+		for (let i = 6; i > 0; i--) {
+			let newDate = new Date(new Date().setDate(new Date().getDate() - i));
+			dates.push({Date: newDate, Status: 'None'});
+		}
+
+		dates.push({Date: new Date(), Status: 'None'});
+
+		let newHabit = await new Habit({
+			desc,
+			dates,
+			user: req.params.id,
+		});
+
+		// console.log(newHabit);
+
+		await newHabit.save();
+
+		let habit = await Habit.find({user: req.params.id}).sort({createdAt: -1});
+		console.log(habit);
+
+		console.log('habit id:', habit[0]._id);
+
+		// console.log(user.habits);
+
+		await user.habits.push(habit[0]._id);
+		await user.save();
+
+		console.log(user.habits);
+
+	} catch (error) {
+		console.error(error);
 	}
 
-	dates.push({Date: new Date(), Status: 'None'});
-
-	const habit = await new Habit({
-		desc,
-		dates,
-	});
-
-	await habit.save();
-
-	return res.redirect('/dashboard');
+	return res.redirect(`/dashboard/${req.params.id}`);
 });
 
 router.post('/delete/:id', async (req, res) => {
@@ -38,7 +70,7 @@ router.post('/delete/:id', async (req, res) => {
 		console.log(error);
 	}
 
-	return res.redirect('/dashboard');
+	return res.redirect(`/dashboard/${req.params.id}`);
 });
 
 router.post('/status', async (req, res) => {
