@@ -1,5 +1,13 @@
 <% title = "Habit Tracker - Dashboard" %>
-<h1 class="text-center my-3">Your Habits</h2>
+
+<nav id="top" class="navbar mb-2 px-2">
+	<img src="/images/logo.png" alt="Habit tracker logo" width="64px" height="64px">
+  <h2 class="text-secondary">Habit Tracker</h2>
+  <form class="form-inline">
+		<span class="mx-2">Hello, <%= userName %>!</span>
+    <a href="/" class="btn btn-outline-secondary my-2 my-sm-0">Logout</a>
+  </form>
+</nav>
 
 <form action="/habits/new/?id=<%= userId%>" method="post">
 	<div class="input-group mb-3 mx-auto" style="width: 60rem;">
@@ -8,9 +16,11 @@
 	</div>
 </form>
 
-<% if (habits) { %>
+<p class="col col-12 mx-auto fs-3">Your habits:</p>
 
-	<ul class="list-group my-2 col col-10 mx-auto">
+<% if (habits.length > 0) { %>
+
+	<ul class="list-group my-2 col col-12 mx-auto">
 		<% for (let i = habits.length - 1; i >= 0; i--) { %>
 			<li class="list-group-item d-flex justify-content-between align-items-center gap-1 border-bottom p-2">
 
