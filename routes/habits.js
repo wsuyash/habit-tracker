@@ -33,11 +33,12 @@ router.post('/new', async (req, res) => {
 
 		await newHabit.save();
 
+		return res.redirect(`/dashboard/${userId}`);
 	} catch (error) {
 		console.error(error);
+		return res.redirect('back');
 	}
 
-	return res.redirect(`/dashboard/${userId}`);
 });
 
 router.post('/delete', async (req, res) => {
@@ -50,8 +51,9 @@ router.post('/delete', async (req, res) => {
 
 		if (habit) {
 			await habit.remove();
-			return res.redirect(`/dashboard/${userId}`);
 		}
+			
+		return res.redirect(`/dashboard/${userId}`);
 
 	} catch (error) {
 		console.log(error);

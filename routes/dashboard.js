@@ -16,6 +16,9 @@ router.get('/:id', async (req, res) => {
 				let numberOfDays = Math.round((new Date() - habits[i].createdAt) / (1000*60*60*24));
 
 				if (numberOfDays > 0) {
+					if (numberOfDays > 7) {
+						numberOfDays = 7;
+					}
 					habits[i].dates = habits[i].dates.splice(numberOfDays);
 
 					for (let j = numberOfDays - 1; j >= 0; j--) {
@@ -39,7 +42,7 @@ router.get('/:id', async (req, res) => {
 		return res.render('dashboard', {
 			userName: user.firstName,
 			userId: id,
-			view: 'weekly',
+			view: user.view,
 			habits,
 		});
 	} catch (error) {

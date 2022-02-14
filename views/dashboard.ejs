@@ -16,9 +16,22 @@
 	</div>
 </form>
 
-<p class="col col-12 mx-auto fs-3">Your habits:</p>
 
 <% if (habits.length > 0) { %>
+
+	<div class="col col-12 mx-auto d-flex align-items-center justify-content-between">
+		<p class="fs-3">Your habits:</p>
+
+		<div class="d-flex justify-content-center align-items-center gap-1">
+			<span class="fs-5">View: &nbsp;</span>
+			<form action="/users/change-view/?userId=<%= userId%>&view=daily" method="post">
+				<button type="submit" class="btn btn-secondary <%= view === 'daily' ? 'active' : '' %>">Daily</button>
+			</form>
+			<form action="/users/change-view/?userId=<%= userId%>&view=weekly" method="post">
+				<button type="submit" class="btn btn-secondary <%= view === 'weekly' ? 'active' : '' %>">Weekly</button>
+			</form>
+		</div>
+	</div>
 
 	<ul class="list-group my-2 col col-12 mx-auto">
 		<% for (let i = habits.length - 1; i >= 0; i--) { %>
@@ -30,9 +43,11 @@
 
 				<% if (view === 'weekly') { %>
 					<% for (let j = 0; j < habits[i].dates.length; j++) { %>
-						<div id="weekly-view" class="d-flex flex-column justify-content-center align-items-center gap-1">
+						<div id="weekly-view" class="d-flex flex-column justify-content-center align-items-center">
 							<%= j !== habits[i].dates.length - 1 ? habits[i].dates[j].Date.toLocaleDateString('en-IN') : 'Today' %>
-							<br>
+							<p>
+								<%= habits[i].dates[j].Date.toLocaleDateString('en-IN', { weekday: 'short' })%>
+							</p>
 							<form action="/habits/status/?userId=<%= userId%>&habitId=<%= habits[i]._id %>&dateId=<%= habits[i].dates[j]._id %>" method="post">
 								<button type="submit" style="border: none; background: transparent;">
 									<% if (habits[i].dates[j].Status === 'None') { %>
