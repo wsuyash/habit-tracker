@@ -6,7 +6,7 @@ const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 
 // Port
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 const app = express();
 

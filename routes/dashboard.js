@@ -30,15 +30,6 @@ router.get('/:id', async (req, res) => {
 			}
 		}
 
-		// console.log('before splice: ', habits[0].dates);
-		// habits[0].dates = habits[0].dates.splice(2);
-		// console.log('after splice: ', habits[0].dates);
-		// habits[0].dates.push({Date: new Date(), Status: 'None'});
-		// console.log('after push: ', habits[0].dates);
-		// habits[0].save();
-		// console.log('after db save: ', habits[0].dates);
-
-
 		return res.render('dashboard', {
 			userName: user.firstName,
 			userId: id,
@@ -47,6 +38,7 @@ router.get('/:id', async (req, res) => {
 		});
 	} catch (error) {
 		console.log(error);	
+		return res.redirect('back');
 	}
 });
 
