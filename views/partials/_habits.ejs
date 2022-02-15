@@ -4,10 +4,10 @@
 	<div class="d-flex justify-content-center align-items-center gap-1">
 		<span class="fs-5">View: &nbsp;</span>
 		<form action="/users/change-view/?userId=<%= userId%>&view=daily" method="post">
-			<button type="submit" class="btn btn-secondary <%= view === 'daily' ? 'active' : '' %>">Daily</button>
+			<button type="submit" class="btn btn-primary <%= view === 'daily' ? 'active' : '' %>">Daily</button>
 		</form>
 		<form action="/users/change-view/?userId=<%= userId%>&view=weekly" method="post">
-			<button type="submit" class="btn btn-secondary <%= view === 'weekly' ? 'active' : '' %>">Weekly</button>
+			<button type="submit" class="btn btn-primary <%= view === 'weekly' ? 'active' : '' %>">Weekly</button>
 		</form>
 	</div>
 </div>

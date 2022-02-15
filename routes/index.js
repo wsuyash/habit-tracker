@@ -1,11 +1,12 @@
+// Imports
 const express = require('express');
 const router = express.Router();
 const db = require('../config/mongoose');
 const Habit = require('../models/Habit');
+const homeController = require('../controllers/home_controller');
 
-router.get('/' , (req, res) => {
-	return res.render('home');
-});
+// Routes
+router.get('/' , homeController.home);
 
 router.use('/users', require('./users'));
 router.use('/dashboard', require('./dashboard'));
