@@ -22,6 +22,4 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/', require('./routes')); // Use the routes
 
 // Start the server
-app.listen(port, (req, res) => {
-  console.log(`Server started on port: ${port}`);	
-});
+app.listen(port, console.log(`Server started on port: ${port}`));	

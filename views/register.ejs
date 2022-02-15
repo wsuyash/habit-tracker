@@ -3,6 +3,9 @@
 <div class="row my-2">
 	<img src="/images/login.png" class="m-auto" style="width: 16rem; height: 15rem;" alt="register logo">
 </div>
+
+<%- include('./partials/_error_messages') %>
+
 <form action="/users/create-user" class="col-6 m-auto" method="post">
 	<div class="row mb-2">
 		<div class="col">
@@ -13,18 +16,29 @@
 				id="firstName"
 				class="form-control"
 				aria-label="First name"
+				value="<%= typeof(firstName) !== undefined ? firstName : '' %>"
 				required
 			>
 		</div>
 		<div class="col">
 			<label for="lastName" class="form-label">Last Name:</label>
-			<input type="text" name="lastName" id="lastName" class="form-control" aria-label="Last name"
+			<input
+				type="text"
+				name="lastName" id="lastName"
+				class="form-control" aria-label="Last name"
+				value="<%= typeof(lastName) !== undefined ? lastName : '' %>"
 			>
 		</div>
 	</div>
 	<div class="mb-2">
 		<label for="email" class="form-label">Email:</label>
-		<input type="email" name="email" class="form-control" id="email" required>
+		<input
+			type="email"
+			name="email"
+			class="form-control"
+			id="email"
+			value="<%= typeof(email) !== undefined ? email : '' %>"
+			required>
 	</div>
 	<div class="mb-2">
 		<label for="password" class="form-label">Password:</label>

@@ -4,7 +4,7 @@ mongoose.connect('mongodb+srv://suyash:suyash123@cluster0.mmzvk.mongodb.net/habi
 
 const db = mongoose.connection; // Create a variable to store the connection
 
-db.on('error', () => { console.log('Error in connecting to the DB.') }); // If there is an error in connecting to the DB, log it to the console
+db.on('error', () => { console.error('Error in connecting to the DB.') }); // If there is an error in connecting to the DB, log it to the console
 
 db.once('open', () => { console.log('Succesfully connected to the DB.') }); // If the connection is successful, log it to the console
 

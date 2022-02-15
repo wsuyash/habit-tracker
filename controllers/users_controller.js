@@ -2,12 +2,18 @@ const User = require('../models/User'); // Import the User model
 
 // Render the login page
 module.exports.login = (req, res) => {
-	return res.render('login');
+	return res.render('login', {
+		email: '',
+	});
 }
 
 // Render the register page
 module.exports.register = (req, res) => {
-	return res.render('register');
+	return res.render('register', {
+		firstName: '',
+		lastName: '',
+		email: '',
+	});
 }
 
 // Login a user to create a session
@@ -17,9 +23,17 @@ module.exports.createSession = async (req, res) => {
 	try {
 		let user = await User.findOne({email: email}); // Find the user with the email
 
+		let errors = []; // Create an errors array
+
 		// If the user doesn't exist or the password is incorrect, redirect to the login page
 		if (!user || password !== user.password) {
-			return res.redirect('back');
+			// Add an error message to the errors array
+			errors.push({ msg: 'Invalid email or password.' });
+			// Render the login page with the errors array
+			return res.render('login', {
+				email: '',
+				errors
+			});
 		}
 
 		return res.redirect(`/dashboard/${user._id}`);
@@ -33,10 +47,18 @@ module.exports.createSession = async (req, res) => {
 module.exports.createUser = async (req, res) => {
 	const { firstName, lastName, email, password, confirmPassword } = req.body; // Get the user's first name, last name, email, password, and confirm password from the form
 
+	let errors = []; // Create an errors array
+
 	// If the password and confirm password don't match, redirect to the register page
 	if (password !== confirmPassword) {
-		console.log('Passwords do not match.');
-		return res.redirect('back');
+		// Add an error message to the errors array
+		errors.push({ msg: 'Passwords do not match.' });
+		return res.render('register', {
+			firstName,
+			lastName,
+			email,
+			errors
+		});
 	}
 
 	try {
@@ -44,7 +66,13 @@ module.exports.createUser = async (req, res) => {
 
 		// If the user already exists, redirect to the login page
 		if (user) {
-			return res.redirect('login');
+			// Add an error message to the errors array
+			errors.push({ msg: 'Email is already in use.\nLogin to continue.' });
+			// Render the login page with the errors array
+			return res.render('login', {
+				email,
+				errors
+			});
 		}
 
 		// Create the new user document
@@ -59,7 +87,9 @@ module.exports.createUser = async (req, res) => {
 		await newUser.save();
 
 		// Redirect to the login page
-		return res.redirect('login');
+		return res.render('login', {
+			email
+		});
 
 	} catch (error) {
 		console.error(error);	
