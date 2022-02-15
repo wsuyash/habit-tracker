@@ -1,15 +1,13 @@
 // Imports
-const express = require('express');
-const router = express.Router();
-const db = require('../config/mongoose');
-const Habit = require('../models/Habit');
-const homeController = require('../controllers/home_controller');
+const express = require('express'); // Import express
+const router = express.Router(); // Create a new router
+
+const homeController = require('../controllers/home_controller'); // Import the home controller 
 
 // Routes
-router.get('/' , homeController.home);
-
-router.use('/users', require('./users'));
-router.use('/dashboard', require('./dashboard'));
-router.use('/habits', require('./habits'));
+router.get('/' , homeController.home); // Get the home page
+router.use('/users', require('./users')); // Use the users routes
+router.use('/dashboard', require('./dashboard')); // Use the dashboard routes
+router.use('/habits', require('./habits')); // Use the habits routes
 
 module.exports = router;

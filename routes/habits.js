@@ -1,10 +1,11 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express'); // Import the express module
+const router = express.Router(); // Create a router object
 
-const habitsController = require('../controllers/habits_controller');
+const habitsController = require('../controllers/habits_controller'); // Import the habits controller
 
-router.post('/new', habitsController.newHabit);
-router.post('/delete', habitsController.deleteHabit);
-router.post('/status', habitsController.changeStatus);
+// Routes
+router.post('/new', habitsController.newHabit); // Create a new habit
+router.post('/delete', habitsController.deleteHabit); // Delete a habit
+router.post('/status', habitsController.changeStatus); // Toggle a habit status
 
-module.exports = router;
+module.exports = router; // Export the router object

@@ -1,5 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); // Import mongoose
 
+// Define the Habit schema
 const HabitSchema = new mongoose.Schema({
   desc: {
     type: String,
@@ -24,6 +25,7 @@ const HabitSchema = new mongoose.Schema({
   timestamps: true,
 });
 
+// Create the Habit model
 const Habit = mongoose.model('Habit', HabitSchema);
 
-module.exports = Habit;
+module.exports = Habit; // Export the Habit model
