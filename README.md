@@ -6,33 +6,33 @@ https://habit-tracker-nodejs.herokuapp.com/
 
 ## Folder Structure
 .<br>
-├── config
+├── config<br>
 │   └── mongoose.js
-├── controllers
+├── controllers<br>
 │   ├── dashboard_controller.js
 │   ├── habits_controller.js
 │   ├── home_controller.js
 │   └── users_controller.js
-├── index.js
-├── models
+├── index.js<br>
+├── models<br>
 │   ├── Habit.js
 │   └── User.js
-├── package.json
-├── package-lock.json
-├── public
+├── package.json<br>
+├── package-lock.json<br>
+├── public<br>
 │   ├── css
 │   ├── images
 │   │   ├── favicon.png
 │   │   ├── login.png
 │   │   └── logo.png
 │   └── js
-├── README.md
-├── routes
+├── README.md<br>
+├── routes<br>
 │   ├── dashboard.js
 │   ├── habits.js
 │   ├── index.js
 │   └── users.js
-└── views
+└── views<br>
     ├── dashboard.ejs
     ├── home.ejs
     ├── layout.ejs
