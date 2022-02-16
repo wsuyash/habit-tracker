@@ -11,8 +11,8 @@ module.exports.newHabit = async (req, res) => {
 
 		// If the habit already exists, redirect to the dashboard
 		if (oldHabit) {
-			console.log('Habit exists');
-			return res.redirect('back');
+			console.error('Habit already exists');
+			return res.redirect(`back`);
 		}
 
 		const dates = []; // Create an empty array for dates

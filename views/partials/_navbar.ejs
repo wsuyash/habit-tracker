@@ -1,8 +1,12 @@
-<nav id="top" class="navbar mb-2 px-2">
-	<img src="/images/logo.png" alt="Habit tracker logo" width="64px" height="64px">
-  <h2 class="text-secondary">Habit Tracker</h2>
-  <form class="form-inline">
+<nav id="top" class="navbar mb-2 px-2 d-flex justify-content-center justify-content-md-between align-items-center gap-1">
+	<div class="d-flex align-items-center gap-1">
+		<div>
+			<img src="/images/logo.png" alt="Habit tracker logo" width="48px" height="48px">
+		</div>
+  	<div class="fw-bold fs-3">Habit Tracker</div>
+	</div>
+	<form class="form-inline">
 		<span class="mx-2">Hello, <%= userName %>!</span>
-    <a href="/" class="btn btn-outline-secondary my-2 my-sm-0">Logout</a>
-  </form>
+		<a href="/" class="btn btn-outline-secondary my-2 my-sm-0">Logout</a>
+	</form>
 </nav>

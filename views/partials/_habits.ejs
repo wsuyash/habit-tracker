@@ -1,4 +1,4 @@
-<div class="col col-12 mx-auto d-flex align-items-center justify-content-between">
+<div class="col col-12 mx-auto d-flex align-items-center justify-content-between flex-column flex-md-row">
 	<p class="fs-3">Your habits:</p>
 
 	<div class="d-flex justify-content-center align-items-center gap-1">
@@ -14,35 +14,41 @@
 
 <ul class="list-group my-2 col col-12 mx-auto">
 	<% for (let i = habits.length - 1; i >= 0; i--) { %>
-		<li class="list-group-item d-flex justify-content-between align-items-center gap-1 border-bottom p-2">
+		<li class="list-group-item d-flex flex-column flex-md-row justify-content-between align-items-center gap-1 border-bottom p-2">
 
-			<div class="align-self-center" style="width: 8rem; font-weight: bold;">
+			<div class="text-center text-break fs-5" style="width: 10rem; color: black;">
 				<%= habits[i].desc %>
 			</div>
 
 			<% if (view === 'weekly') { %>
-				<% for (let j = 0; j < habits[i].dates.length; j++) { %>
-					<div id="weekly-view" class="d-flex flex-column justify-content-center align-items-center">
-						<%= j !== habits[i].dates.length - 1 ? habits[i].dates[j].Date.toLocaleDateString('en-IN') : 'Today' %>
-						<p>
-							<%= habits[i].dates[j].Date.toLocaleDateString('en-IN', { weekday: 'short' })%>
-						</p>
-						<form action="/habits/status/?userId=<%= userId%>&habitId=<%= habits[i]._id %>&dateId=<%= habits[i].dates[j]._id %>" method="post">
-							<button type="submit" style="border: none; background: transparent;">
-								<% if (habits[i].dates[j].Status === 'None') { %>
-									<i class="fa-solid fa-circle" style="font-size: 32px; color: white;"></i>
-								<% } else if(habits[i].dates[j].Status === 'Not Done') { %>
-									<i class="fa-solid fa-circle-xmark" style="font-size: 32px;color: red;"></i>
-								<% } else { %>
-									<i class="fa-solid fa-circle-check" style="font-size: 32px;color: #4aff00;"></i>
-								<% } %>
-							</button>
-						</form>
-					</div>
-				<% } %>
+				<div class="d-flex justify-content-center flex-wrap align-items-center gap-3 my-4 my-md-2">
+					<% for (let j = 0; j < habits[i].dates.length; j++) { %>
+						<div id="weekly-view" class="d-flex flex-column justify-content-center align-items-center">
+							<p>
+								<%= j !== habits[i].dates.length - 1 ? habits[i].dates[j].Date.toLocaleDateString('en-IN') : 'Today' %>
+							</p>
+							<p>
+								<%= habits[i].dates[j].Date.toLocaleDateString('en-IN', { weekday: 'short' })%>
+							</p>
+							<form action="/habits/status/?userId=<%= userId%>&habitId=<%= habits[i]._id %>&dateId=<%= habits[i].dates[j]._id %>" method="post">
+								<button type="submit" style="border: none; background: transparent;">
+									<% if (habits[i].dates[j].Status === 'None') { %>
+										<i class="fa-solid fa-circle" style="font-size: 32px; color: white;"></i>
+									<% } else if(habits[i].dates[j].Status === 'Not Done') { %>
+										<i class="fa-solid fa-circle-xmark" style="font-size: 32px;color: red;"></i>
+									<% } else { %>
+										<i class="fa-solid fa-circle-check" style="font-size: 32px;color: #4aff00;"></i>
+									<% } %>
+								</button>
+							</form>
+						</div>
+					<% } %>
+				</div>
 			<% } else { %>
 					<div id="daily-view" class="d-flex justify-content-between align-items-center gap-1">
-						Today, <%= habits[i].dates[6].Date.toDateString('en-IN') %>
+						<div class="text-center">
+							Today, <%= habits[i].dates[6].Date.toDateString('en-IN') %>
+						</div>
 						<br>
 						<form action="/habits/status/?userId=<%= userId%>&habitId=<%= habits[i]._id %>&dateId=<%= habits[i].dates[6]._id %>" method="post">
 							<button type="submit" style="border: none; background: transparent;">
@@ -59,7 +65,7 @@
 				
 			<% } %>
 				
-			<form class="align-self-center" action="/habits/delete/?userId=<%= userId%>&habitId=<%= habits[i]._id %>" method="post">
+			<form class="" action="/habits/delete/?userId=<%= userId%>&habitId=<%= habits[i]._id %>" method="post">
 					<button class="btn btn-sm btn-danger" type="submit">Delete</button>
 			</form>
 

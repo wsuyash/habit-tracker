@@ -3,14 +3,13 @@
 <%- include('./partials/_navbar') %>
 
 <form action="/habits/new/?id=<%= userId%>" method="post">
-	<div class="input-group mb-3 mx-auto" style="width: 60rem;">
+	<div class="input-group mb-3 mx-auto">
 		<input type="text" class="form-control" name="desc" placeholder="Add a new habit..." aria-label="Add a new habit..." aria-describedby="button-addon2" required>
 		<button class="btn btn-outline-secondary" type="submit" id="button-addon2">Add Habit</button>
 	</div>
 </form>
 
-
-<% if (habits.length > 0) { %>
+<% if (habits && habits.length > 0) { %>
 
 	<%- include('./partials/_habits') %>
 
