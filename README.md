@@ -4,7 +4,7 @@ A habit tracker app created using NodeJs, Express, EJS, and MongoDB.
 ## This project is hosted at:
 https://habit-tracker-nodejs.herokuapp.com/
 
-## Folder Structure
+## Folder Structure:
 .<br>
 ├── config<br>
 │   └── mongoose.js<br>
@@ -42,3 +42,14 @@ https://habit-tracker-nodejs.herokuapp.com/
     │   ├── _habits.ejs<br>
     │   └── _navbar.ejs<br>
     └── register.ejs<br>
+    
+ ## To run this locally:
+ ### Clone this repo: 
+ git clone https://github.com/wsuyash/habit-tracker.git
+ ### Into the habit-tracker directory:
+ #### Download the dependencies:
+ npm install
+ #### Run the app on localhost:
+ npm start
+ 
+ The app should be running at localhost:8000
