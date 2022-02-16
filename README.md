@@ -47,7 +47,7 @@ https://habit-tracker-nodejs.herokuapp.com/
  ### Clone this repo: 
  git clone https://github.com/wsuyash/habit-tracker.git
  ### Into the habit-tracker directory:
- #### Open a terminal ownload the dependencies:
+ #### Open a terminal and download the dependencies:
  npm install
  #### Run the app on localhost:
  npm start
