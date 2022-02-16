@@ -7,38 +7,38 @@ https://habit-tracker-nodejs.herokuapp.com/
 ## Folder Structure
 .<br>
 ├── config<br>
-│   └── mongoose.js
+│   └── mongoose.js<br>
 ├── controllers<br>
-│   ├── dashboard_controller.js
-│   ├── habits_controller.js
-│   ├── home_controller.js
-│   └── users_controller.js
+│   ├── dashboard_controller.js<br>
+│   ├── habits_controller.js<br>
+│   ├── home_controller.js<br>
+│   └── users_controller.js<br>
 ├── index.js<br>
 ├── models<br>
-│   ├── Habit.js
-│   └── User.js
+│   ├── Habit.js<br>
+│   └── User.js<br>
 ├── package.json<br>
 ├── package-lock.json<br>
 ├── public<br>
-│   ├── css
-│   ├── images
-│   │   ├── favicon.png
-│   │   ├── login.png
-│   │   └── logo.png
-│   └── js
+│   ├── css<br>
+│   ├── images<br>
+│   │   ├── favicon.png<br>
+│   │   ├── login.png<br>
+│   │   └── logo.png<br>
+│   └── js<br>
 ├── README.md<br>
 ├── routes<br>
-│   ├── dashboard.js
-│   ├── habits.js
-│   ├── index.js
-│   └── users.js
+│   ├── dashboard.js<br>
+│   ├── habits.js<br>
+│   ├── index.js<br>
+│   └── users.js<br>
 └── views<br>
-    ├── dashboard.ejs
-    ├── home.ejs
-    ├── layout.ejs
-    ├── login.ejs
-    ├── partials
-    │   ├── _error_messages.ejs
-    │   ├── _habits.ejs
-    │   └── _navbar.ejs
-    └── register.ejs
+    ├── dashboard.ejs<br>
+    ├── home.ejs<br>
+    ├── layout.ejs<br>
+    ├── login.ejs<br>
+    ├── partials<br>
+    │   ├── _error_messages.ejs<br>
+    │   ├── _habits.ejs<br>
+    │   └── _navbar.ejs<br>
+    └── register.ejs<br>
